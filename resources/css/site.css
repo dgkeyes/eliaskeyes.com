@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "../views";
+@source "../../content";
+
+body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}

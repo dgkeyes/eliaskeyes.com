@@ -1,0 +1,5 @@
+title: Projects
+route: '/projects/{slug}'
+template: projects/show
+layout: layout
+sort_dir: asc

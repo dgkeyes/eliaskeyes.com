@@ -1,0 +1,65 @@
+title: Home
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Hero
+        fields:
+          -
+            handle: headshot
+            field:
+              type: assets
+              container: assets
+              max_files: 1
+              mode: list
+              display: Headshot
+              instructions: 'Upload a round profile photo'
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              instructions: 'Your full name'
+              validate:
+                - required
+      -
+        display: About
+        fields:
+          -
+            handle: about
+            field:
+              type: bard
+              display: About
+              instructions: 'Write about yourself'
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+              save_html: false
+              always_show_set_button: false
+              sets: null
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true

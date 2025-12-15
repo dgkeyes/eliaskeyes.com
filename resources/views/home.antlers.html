@@ -1,0 +1,65 @@
+<main class="max-w-2xl mx-auto px-6 py-16 md:py-24">
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center text-center mb-16">
+        <!-- Round Headshot -->
+        {{ if headshot }}
+        <div class="mb-6">
+            {{ headshot }}
+            <img
+                src="{{ url }}"
+                alt="{{ name }}"
+                class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-zinc-800 shadow-xl"
+            >
+            {{ /headshot }}
+        </div>
+        {{ /if }}
+        <!-- Name -->
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">{{ name }}</h1>
+    </section>
+
+    <!-- About Section -->
+    {{ if about }}
+    <section class="mb-16">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="text-zinc-500 font-mono text-sm">/</span>
+            <h2 class="text-zinc-500 font-mono text-sm uppercase tracking-wide">about</h2>
+        </div>
+        <div class="prose prose-invert prose-zinc max-w-none prose-p:text-zinc-300 prose-p:text-lg prose-p:leading-relaxed">
+            {{ about }}
+        </div>
+    </section>
+    {{ /if }}
+
+    <!-- Projects Section -->
+    {{ collection:projects }}
+    {{ if first }}
+    <section>
+        <div class="flex items-center gap-2 mb-6">
+            <span class="text-zinc-500 font-mono text-sm">/</span>
+            <h2 class="text-zinc-500 font-mono text-sm uppercase tracking-wide">projects</h2>
+        </div>
+        <div class="grid gap-4">
+    {{ /if }}
+            <!-- Project Card -->
+            <a href="{{ url }}" class="group block p-6 bg-zinc-900 rounded-xl border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/50 transition-all duration-200">
+                <h3 class="text-xl font-semibold text-white mb-2 transition-colors
+                    {{ switch(
+                        (hover_color == 'blue') => 'group-hover:text-blue-400',
+                        (hover_color == 'purple') => 'group-hover:text-purple-400',
+                        (hover_color == 'green') => 'group-hover:text-green-400',
+                        (hover_color == 'orange') => 'group-hover:text-orange-400',
+                        (hover_color == 'pink') => 'group-hover:text-pink-400',
+                        () => 'group-hover:text-blue-400'
+                    ) }}">
+                    {{ title }}
+                </h3>
+                {{ if description }}
+                <p class="text-zinc-400">{{ description }}</p>
+                {{ /if }}
+            </a>
+    {{ if last }}
+        </div>
+    </section>
+    {{ /if }}
+    {{ /collection:projects }}
+</main>

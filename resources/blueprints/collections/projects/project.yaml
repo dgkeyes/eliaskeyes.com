@@ -1,0 +1,65 @@
+title: Project
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Project Details
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Short Description
+              instructions: 'A brief summary shown on the homepage card'
+              character_limit: 200
+          -
+            handle: hover_color
+            field:
+              type: button_group
+              display: Card Hover Color
+              instructions: 'Color when hovering over the project card'
+              options:
+                blue: Blue
+                purple: Purple
+                green: Green
+                orange: Orange
+                pink: Pink
+              default: blue
+          -
+            handle: content
+            field:
+              type: bard
+              display: Content
+              instructions: 'Full project description'
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+              save_html: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
