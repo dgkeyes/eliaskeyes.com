@@ -7,7 +7,8 @@
       "Bash(npm install)",
       "Bash(npm run build:*)",
       "Bash(php artisan:*)",
-      "Bash(herd secure:*)"
+      "Bash(herd secure:*)",
+      "Bash(php please ssg:generate:*)"
     ]
   }
 }
