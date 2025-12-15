@@ -39,16 +39,15 @@ jobs:
       - name: Create .env file
         run: |
           cp .env.example .env
-          php artisan key:generate
-
-      - name: Set production environment
-        run: |
           sed -i 's|APP_ENV=.*|APP_ENV=production|' .env
           sed -i 's|APP_DEBUG=.*|APP_DEBUG=false|' .env
           sed -i 's|APP_URL=.*|APP_URL=https://zippy-tartufo-c92848.netlify.app|' .env
 
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Generate app key
+        run: php artisan key:generate
 
       - name: Install npm dependencies
         run: npm ci
