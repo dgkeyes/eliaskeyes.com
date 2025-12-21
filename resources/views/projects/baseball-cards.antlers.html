@@ -1,0 +1,144 @@
+<main class="max-w-2xl mx-auto px-6 py-16 md:py-24">
+    <!-- Back link -->
+    <a href="/" class="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to home
+    </a>
+
+    <!-- Project Header -->
+    <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ title }}</h1>
+        {{ if description }}
+        <p class="text-xl text-zinc-400">{{ description }}</p>
+        {{ /if }}
+    </header>
+
+    <!-- Project Content -->
+    {{ if content }}
+    <article class="prose prose-invert prose-zinc max-w-none prose-headings:text-white prose-p:text-zinc-300 prose-a:text-blue-400 prose-strong:text-white mb-16">
+        {{ content }}
+    </article>
+    {{ /if }}
+
+    <!-- Order Form Section -->
+    <section class="mt-16 pt-16 border-t border-zinc-800">
+        <h2 class="text-2xl font-bold text-white mb-4">Request a Custom Card</h2>
+        <p class="text-zinc-400 mb-8">Want me to make a custom baseball card for your kid? Fill out the form below with their photo and stats, and I'll create a one-of-a-kind card just for them!</p>
+
+        {{ form:baseball_card_request }}
+            {{ if errors }}
+            <div class="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-6">
+                <p class="font-semibold mb-2">Please fix the following errors:</p>
+                <ul class="list-disc list-inside">
+                    {{ errors }}
+                        <li>{{ value }}</li>
+                    {{ /errors }}
+                </ul>
+            </div>
+            {{ /if }}
+
+            {{ if success }}
+            <div class="bg-green-900/50 border border-green-500 text-green-200 px-4 py-3 rounded-lg mb-6">
+                <p class="font-semibold">Thanks for your request!</p>
+                <p>I'll start working on the custom card soon. Check your email for confirmation!</p>
+            </div>
+            {{ else }}
+
+            <div class="space-y-6">
+                <!-- Parent Info -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="parent_name" class="block text-sm font-medium text-zinc-300 mb-2">Your Name *</label>
+                        <input type="text" name="parent_name" id="parent_name" value="{{ old:parent_name }}" required
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="parent_email" class="block text-sm font-medium text-zinc-300 mb-2">Your Email *</label>
+                        <input type="email" name="parent_email" id="parent_email" value="{{ old:parent_email }}" required
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Kid Info -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="kid_name" class="block text-sm font-medium text-zinc-300 mb-2">Kid's Name *</label>
+                        <input type="text" name="kid_name" id="kid_name" value="{{ old:kid_name }}" required placeholder="Name for the card"
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="kid_age" class="block text-sm font-medium text-zinc-300 mb-2">Kid's Age *</label>
+                        <input type="text" name="kid_age" id="kid_age" value="{{ old:kid_age }}" required
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Team and Position -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="team_name" class="block text-sm font-medium text-zinc-300 mb-2">Team Name</label>
+                        <input type="text" name="team_name" id="team_name" value="{{ old:team_name }}" placeholder="Real or made-up"
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="position" class="block text-sm font-medium text-zinc-300 mb-2">Position</label>
+                        <input type="text" name="position" id="position" value="{{ old:position }}" placeholder="e.g., Pitcher, Catcher"
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="batting_average" class="block text-sm font-medium text-zinc-300 mb-2">Batting Average</label>
+                        <input type="text" name="batting_average" id="batting_average" value="{{ old:batting_average }}" placeholder="e.g., .350"
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="home_runs" class="block text-sm font-medium text-zinc-300 mb-2">Home Runs</label>
+                        <input type="text" name="home_runs" id="home_runs" value="{{ old:home_runs }}" placeholder="e.g., 12"
+                            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Special Abilities -->
+                <div>
+                    <label for="special_abilities" class="block text-sm font-medium text-zinc-300 mb-2">Special Abilities</label>
+                    <textarea name="special_abilities" id="special_abilities" rows="3" placeholder="What makes this player special? Any superpowers or fun facts?"
+                        class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none">{{ old:special_abilities }}</textarea>
+                </div>
+
+                <!-- Photo Upload -->
+                <div>
+                    <label for="photo" class="block text-sm font-medium text-zinc-300 mb-2">Photo</label>
+                    <input type="file" name="photo" id="photo" accept="image/*"
+                        class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white file:cursor-pointer hover:file:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="mt-2 text-sm text-zinc-500">Upload a photo of the kid for the card</p>
+                </div>
+
+                <!-- Additional Notes -->
+                <div>
+                    <label for="additional_notes" class="block text-sm font-medium text-zinc-300 mb-2">Additional Notes</label>
+                    <textarea name="additional_notes" id="additional_notes" rows="3" placeholder="Anything else you want on the card?"
+                        class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none">{{ old:additional_notes }}</textarea>
+                </div>
+
+                <!-- Honeypot -->
+                <div class="hidden">
+                    <input type="text" name="honeypot">
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit"
+                        class="w-full md:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-900">
+                        Submit Request
+                    </button>
+                </div>
+            </div>
+            {{ /if }}
+        {{ /form:baseball_card_request }}
+    </section>
+</main>

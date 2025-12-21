@@ -8,7 +8,11 @@
       "Bash(npm run build:*)",
       "Bash(php artisan:*)",
       "Bash(herd secure:*)",
-      "Bash(php please ssg:generate:*)"
+      "Bash(php please ssg:generate:*)",
+      "Bash(herd links:*)",
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)"
     ]
   }
 }

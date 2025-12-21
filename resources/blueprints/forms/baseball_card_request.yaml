@@ -1,0 +1,76 @@
+title: 'Baseball Card Request'
+fields:
+  -
+    handle: parent_name
+    field:
+      type: text
+      display: 'Parent Name'
+      validate:
+        - required
+  -
+    handle: parent_email
+    field:
+      type: text
+      display: 'Parent Email'
+      input_type: email
+      validate:
+        - required
+        - email
+  -
+    handle: kid_name
+    field:
+      type: text
+      display: "Kid's Name"
+      instructions: 'The name that will appear on the card'
+      validate:
+        - required
+  -
+    handle: kid_age
+    field:
+      type: text
+      display: "Kid's Age"
+      validate:
+        - required
+  -
+    handle: team_name
+    field:
+      type: text
+      display: 'Team Name'
+      instructions: 'Real or made-up team name'
+  -
+    handle: position
+    field:
+      type: text
+      display: 'Position'
+      instructions: 'e.g., Pitcher, Catcher, Outfield'
+  -
+    handle: batting_average
+    field:
+      type: text
+      display: 'Batting Average'
+      instructions: 'Real or made-up (e.g., .350)'
+  -
+    handle: home_runs
+    field:
+      type: text
+      display: 'Home Runs'
+  -
+    handle: special_abilities
+    field:
+      type: textarea
+      display: 'Special Abilities'
+      instructions: 'What makes this player special? Any superpowers or fun facts?'
+  -
+    handle: photo
+    field:
+      type: assets
+      display: 'Photo'
+      instructions: 'Upload a photo of the kid for the card'
+      container: assets
+      max_files: 1
+  -
+    handle: additional_notes
+    field:
+      type: textarea
+      display: 'Additional Notes'
+      instructions: 'Anything else you want on the card?'
