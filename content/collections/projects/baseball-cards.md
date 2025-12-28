@@ -4,7 +4,7 @@ blueprint: project
 template: projects/baseball-cards
 title: "Custom Baseball Cards"
 slug: baseball-cards
-description: "I design and create my own baseball trading cards featuring my favorite players and original characters. Each card is hand-drawn with unique stats and cool artwork."
+description: "I design and create my own baseball trading cards featuring my favorite players and original characters."
 hover_color: blue
 content:
     - type: paragraph
@@ -21,6 +21,16 @@ content:
       content:
           - type: text
             text: "I design my own baseball cards. Some feature real players from my favorite teams, and others are completely made-up characters with their own backstories and stats."
+    - type: paragraph
+      content:
+          - type: text
+            text: "Here's an example of one of my cards:"
+    - type: paragraph
+      content:
+          - type: image
+            attrs:
+                src: /assets/elias-baseball-card.png
+                alt: "Elias Keyes custom baseball card"
     - type: heading
       attrs:
           level: 2
