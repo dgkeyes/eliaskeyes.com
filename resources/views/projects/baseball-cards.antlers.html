@@ -114,6 +114,40 @@
                         class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
                 </div>
 
+                <!-- Shipping Address -->
+                <div class="pt-6 border-t border-zinc-800">
+                    <h3 class="text-lg font-semibold text-white mb-4">Shipping Address</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="address_street" class="block text-sm font-medium text-zinc-300 mb-2">Street Address *</label>
+                            <input type="text" name="address_street" id="address_street" required placeholder="123 Main St"
+                                class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="address_street2" class="block text-sm font-medium text-zinc-300 mb-2">Apt, Suite, etc.</label>
+                            <input type="text" name="address_street2" id="address_street2" placeholder="Apt 4B"
+                                class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="address_city" class="block text-sm font-medium text-zinc-300 mb-2">City *</label>
+                                <input type="text" name="address_city" id="address_city" required
+                                    class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="address_state" class="block text-sm font-medium text-zinc-300 mb-2">State *</label>
+                                <input type="text" name="address_state" id="address_state" required placeholder="OR"
+                                    class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="address_zip" class="block text-sm font-medium text-zinc-300 mb-2">ZIP Code *</label>
+                                <input type="text" name="address_zip" id="address_zip" required placeholder="97201"
+                                    class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
