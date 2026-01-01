@@ -1,6 +1,7 @@
 ---
 id: anxiety
 blueprint: project
+template: projects/anxiety
 title: 'All About Anxiety'
 slug: anxiety
 description: 'A project to help kids and adults understand what it''s like to have anxiety. I share my experiences, tips for feeling better, and ways to support someone who feels anxious.'

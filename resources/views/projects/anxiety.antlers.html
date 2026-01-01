@@ -1,0 +1,49 @@
+<main class="max-w-2xl mx-auto px-6 py-16 md:py-24">
+    <!-- Back link -->
+    <a href="/" class="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to home
+    </a>
+
+    <!-- Project Header -->
+    <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ title }}</h1>
+        {{ if description }}
+        <p class="text-xl text-zinc-400">{{ description }}</p>
+        {{ /if }}
+    </header>
+
+    <!-- Intro paragraph -->
+    <article class="prose prose-invert prose-zinc max-w-none prose-headings:text-white prose-p:text-zinc-300 prose-a:text-blue-400 prose-strong:text-white">
+        <p>This is a really important project to me. I want to help other kids (and adults too!) understand what anxiety feels like and how to deal with it.</p>
+    </article>
+
+    <!-- Interviews Section -->
+    <h2 class="text-2xl font-bold text-white mt-12 mb-4">Interviews with Elias about Anxiety</h2>
+    <div class="mb-8">
+        <p class="text-zinc-300 mb-3"><strong class="text-white">Episode 1:</strong> My anxiety and how I react to it</p>
+        <audio controls class="w-full">
+            <source src="/assets/elias-explains-his-anxiety.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Rest of Content -->
+    <article class="prose prose-invert prose-zinc max-w-none prose-headings:text-white prose-p:text-zinc-300 prose-a:text-blue-400 prose-strong:text-white">
+        <h2>What is Anxiety?</h2>
+        <p>Anxiety is when you feel really worried or scared about things, sometimes even things that haven't happened yet. It can make your heart beat fast, your stomach feel weird, or make it hard to sleep.</p>
+
+        <h2>Why I Made This</h2>
+        <p>I know what it's like to feel anxious. Sometimes it's hard to explain to people who don't understand. I want to help others feel less alone and show them that it's okay to feel this way.</p>
+
+        <h2>Tips That Help Me</h2>
+        <ul>
+            <li>Take deep breaths - breathe in for 4 counts, hold for 4, breathe out for 4</li>
+            <li>Talk to someone you trust about how you're feeling</li>
+            <li>Do something you enjoy to take your mind off worries</li>
+            <li>Remember that the anxious feeling will pass</li>
+        </ul>
+    </article>
+</main>
