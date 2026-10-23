@@ -21,8 +21,10 @@ export default {
     async fetch(request, env) {
         const url = new URL(request.url);
 
-        if (url.hostname.startsWith("www.")) {
-            url.hostname = url.hostname.slice(4);
+        // Send http and www traffic to https on the bare domain.
+        if (url.protocol === "http:" || url.hostname.startsWith("www.")) {
+            url.protocol = "https:";
+            url.hostname = url.hostname.replace(/^www\./, "");
             return Response.redirect(url.toString(), 301);
         }
 
