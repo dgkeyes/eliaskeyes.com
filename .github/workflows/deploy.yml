@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+name: Deploy to Cloudflare
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Get Composer cache directory
@@ -41,7 +41,7 @@ jobs:
           cp .env.example .env
           sed -i 's|APP_ENV=.*|APP_ENV=production|' .env
           sed -i 's|APP_DEBUG=.*|APP_DEBUG=false|' .env
-          sed -i 's|APP_URL=.*|APP_URL=https://zippy-tartufo-c92848.netlify.app|' .env
+          sed -i 's|APP_URL=.*|APP_URL=https://eliaskeyes.com|' .env
 
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader --no-interaction
@@ -58,14 +58,8 @@ jobs:
       - name: Generate static site
         run: php please ssg:generate
 
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
         with:
-          publish-dir: './storage/app/static'
-          production-branch: main
-          production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions - ${{ github.sha }}"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

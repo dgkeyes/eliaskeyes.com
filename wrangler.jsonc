@@ -1,0 +1,32 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "eliaskeyes-com",
+    "main": "worker/index.js",
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": ["nodejs_compat"],
+    // The Statamic static build (php please ssg:generate) lands here.
+    "assets": {
+        "directory": "./storage/app/static",
+        "binding": "ASSETS",
+        "not_found_handling": "404-page",
+        "run_worker_first": true
+    },
+    // Form submissions are emailed here. The address must be verified under Email Routing in Cloudflare.
+    "vars": {
+        "FORMS_TO": "dgkeyes@gmail.com"
+    },
+    "send_email": [
+        {
+            "name": "FORMS_EMAIL",
+            "destination_address": "dgkeyes@gmail.com"
+        }
+    ],
+    // The Worker redirects www to the bare domain.
+    "routes": [
+        { "pattern": "eliaskeyes.com", "custom_domain": true },
+        { "pattern": "www.eliaskeyes.com", "custom_domain": true }
+    ],
+    "observability": {
+        "enabled": true
+    }
+}
