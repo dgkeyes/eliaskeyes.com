@@ -1,5 +1,5 @@
 import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
+import { createMimeMessage, Mailbox } from "mimetext";
 
 // Each form posts to /api/forms with a hidden form-name field. This maps it to an email subject and a thank-you page.
 const FORMS = {
@@ -64,9 +64,7 @@ async function handleForm(request, env) {
     msg.setSender(SENDER);
     msg.setRecipient(env.FORMS_TO);
     msg.setSubject(`${form.subject} from ${data.get(form.nameField) || "someone"}`);
-    if (data.get(form.emailField)) {
-        msg.setHeader("Reply-To", data.get(form.emailField));
-    }
+    setReplyTo(msg, data.get(form.emailField));
 
     for (const file of files) {
         if (file.size > MAX_ATTACHMENT_BYTES) {
@@ -90,6 +88,16 @@ async function handleForm(request, env) {
     }
 
     return thankYou;
+}
+
+// Replies go straight to the parent. A malformed address is left off rather than failing the request.
+function setReplyTo(msg, address) {
+    if (!address) return;
+    try {
+        msg.setHeader("Reply-To", new Mailbox(address));
+    } catch {
+        console.warn("Skipping invalid Reply-To", address);
+    }
 }
 
 function labelFor(key) {
