@@ -28,6 +28,11 @@ export default {
             return Response.redirect(url.toString(), 301);
         }
 
+        // Elias's baseball game lives on its own subdomain.
+        if (/^\/bigleaguedreams\/?$/i.test(url.pathname)) {
+            return Response.redirect("https://bigleaguedreams.eliaskeyes.com/", 301);
+        }
+
         if (url.pathname === "/api/forms" && request.method === "POST") {
             return handleForm(request, env);
         }
